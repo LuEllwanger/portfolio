@@ -1,0 +1,31 @@
+COMO EDITAR O PORTFÓLIO
+=======================
+
+Arquivos da pasta:
+  index.html   -> estrutura da página (não precisa mexer)
+  style.css    -> cores, fontes e layout
+  script.js    -> lógica do site (não precisa mexer)
+  conteudo.js  -> TODOS os textos, links, imagens e projetos
+  imagens/     -> suas fotos, artes e capas de projetos
+  videos/      -> vídeos dos projetos
+
+Para ver o site: dois cliques no index.html.
+
+Para mudar um texto:
+  1. Abra o conteudo.js no Bloco de Notas ou no VS Code.
+  2. Ache o texto, troque o que está entre aspas (pt e en).
+  3. Salve e aperte F5 no navegador.
+
+Para colocar uma imagem:
+  1. Copie a imagem para a pasta "imagens" (ex: foto.jpg).
+  2. No conteudo.js, escreva o caminho: foto: "imagens/foto.jpg",
+
+Para adicionar um projeto, arte ou habilidade:
+  Copie um item inteiro, de { até },  e cole logo abaixo.
+  Não esqueça a vírgula depois da }.
+
+Se a página ficar em branco depois de uma mudança, quase sempre
+faltou uma vírgula ou uma aspa no conteudo.js.
+
+Textos entre [colchetes] aparecem destacados em rosa: são lembretes
+do que ainda falta preencher.
