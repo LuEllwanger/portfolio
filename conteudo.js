@@ -30,7 +30,7 @@ const CONTEUDO = {
   nome: "Luiza",
   sobrenome: "Ellwanger",
   cidade: "Novo Hamburgo",
-  foto: "", // ex: "imagens/foto.jpg"
+  foto: "imagens/foto1.jpg", // ex: "imagens/foto.jpg"
 
   saudacao: { pt: "oi! eu sou a", en: "hi, I'm" },
 
@@ -52,16 +52,16 @@ const CONTEUDO = {
     bilhete: { pt: "prazer! ✿", en: "nice to meet you! ✿" }, // adesivo ao lado da foto
     paragrafos: [
       {
-        pt: "Sou estudante de Publicidade e Propaganda na [nome da faculdade] e hoje estagio em [área / empresa].",
-        en: "I study Advertising at [university name] and I'm currently an intern at [area / company].",
+        pt: "Sou estudante de Publicidade e Propaganda na Faculdade Feevale e atualmente sou estagiária na Secretaria de Desenvolvimento Econômico e Inovação da Prefeitura de Novo Hamburgo .",
+        en: "I study Advertising at Feevale university and I'm currently an intern at Department of Economic Development and Innovation of the Novo Hamburgo City Government.",
       },
       {
-        pt: "Ainda estou descobrindo qual caminho da comunicação é o meu, e encaro isso como vantagem: gosto de experimentar entre criação, conteúdo e estratégia, aprendendo um pouco de cada lugar por onde passo.",
+        pt: "Ainda estou descobrindo qual caminho da comunicação é o meu, e encaro isso como vantagem: gosto de experimentar entre criação, conteúdo e estratégia, expandindo meus conhecimentos e conhecendo novas coisas em cada lugar por onde passo.",
         en: "I'm still finding my path in communication, and I see that as an advantage: I like moving between creative, content and strategy, learning something from every place I work.",
       },
       {
-        pt: "Fora do trabalho, sou a pessoa da aquarela, dos jogos, dos livros e dos animes. Muito do meu olhar criativo vem daí.",
-        en: "Outside work I'm into watercolor, games, books and anime. A lot of my creative eye comes from there.",
+        pt: "Adoro conversar e explorar, sempre buscando expandir meu repertório e conexões.",
+        en: "I love talking and exploring, always looking to expand my repertoire and connections.",
       },
     ],
     // Os três dados rápidos embaixo do texto
@@ -117,7 +117,7 @@ const CONTEUDO = {
   /* ---------- FORMAÇÃO ----------
      cor pode ser: "rosa", "azul" ou "roxo" (a bolinha da linha do tempo) */
   formacao: {
-    titulo: { pt: "Por onde ando aprendendo", en: "Where I've been learning" },
+    titulo: { pt: "Minha trajetória", en: "Where I've been learning" },
     texto: {
       pt: "Faculdade, estágio e os cursos que vão completando o repertório.",
       en: "College, internship and the courses that keep adding to my toolkit.",
@@ -125,29 +125,19 @@ const CONTEUDO = {
     etapas: [
       {
         cor: "rosa",
-        quando: { pt: "[2024] até hoje", en: "[2024] to now" },
+        quando: { pt: "2025 - atualmente", en: "2025 to now" },
         tipo: { pt: "Graduação", en: "Bachelor's degree" },
         titulo: { pt: "Publicidade e Propaganda", en: "Advertising" },
-        local: { pt: "[Nome da faculdade]", en: "[University name]" },
+        local: { pt: "Feevale", en: "Feevale" },
         descricao: {
-          pt: "Disciplinas favoritas até agora: [ex: Criação, Direção de Arte, Planejamento].",
-          en: "Favorite courses so far: [e.g. Copy, Art Direction, Planning].",
         },
       },
       {
-        cor: "azul",
-        quando: { pt: "[2026] até hoje", en: "[2026] to now" },
-        tipo: { pt: "Estágio", en: "Internship" },
-        titulo: { pt: "[Cargo, ex: Estagiária de Marketing]", en: "[Role, e.g. Marketing Intern]" },
-        local: { pt: "[Empresa ou agência]", en: "[Company or agency]" },
-        descricao: { pt: "[Duas linhas sobre o que você faz no dia a dia]", en: "[Two lines about your day-to-day work]" },
-      },
-      {
         cor: "roxo",
-        quando: { pt: "[2025]", en: "[2025]" },
-        tipo: { pt: "Curso complementar", en: "Course" },
-        titulo: { pt: "[Nome do curso]", en: "[Course name]" },
-        local: { pt: "[Instituição]", en: "[Institution]" },
+        quando: { pt: "2017 - 2021", en: "2017 - 2021" },
+        tipo: { pt: "Ensino Médio integrado com técnico", en: "Course" },
+        titulo: { pt: "Eletrotécnica", en: "Electrotechnics" },
+        local: { pt: "Fundação Liberato Salzano Vieira da Cunha", en: "Foundation Liberato Salzano Vieira da Cunha" },
         descricao: { pt: "", en: "" },
       },
     ],
@@ -180,7 +170,6 @@ const CONTEUDO = {
       { pt: "Canva", en: "Canva" },
       { pt: "Photoshop", en: "Photoshop" },
       { pt: "Illustrator", en: "Illustrator" },
-      { pt: "Figma", en: "Figma" },
       { pt: "CapCut", en: "CapCut" },
       { pt: "Pacote Office", en: "Microsoft Office" },
     ],
@@ -198,8 +187,8 @@ const CONTEUDO = {
     instagram: "ellaurel.art", // sem o @
     titulo: { pt: "Aquarela, papel e água", en: "Watercolor, paper and water" },
     texto: {
-      pt: "Meu cantinho criativo fora da publicidade. As peças completas ficam no Instagram.",
-      en: "My creative corner outside advertising. The full collection lives on Instagram.",
+      pt: "Meu cantinho criativo. As peças completas ficam no Instagram.",
+      en: "My creative corner. The full collection lives on Instagram.",
     },
     obras: [
       { imagem: "", titulo: { pt: "estudo de flores", en: "flower study" }, link: "" },
@@ -217,22 +206,22 @@ const CONTEUDO = {
   hobbies: {
     titulo: { pt: "pra me conhecer melhor", en: "to know me a little better" },
     lista: [
-      { icone: "pincel", titulo: { pt: "Aquarela", en: "Watercolor" }, agoraTitulo: { pt: "pintando agora", en: "painting now" }, agora: { pt: "[tema atual]", en: "[current theme]" } },
+      { icone: "pincel", titulo: { pt: "Arte", en: "Art" }, agoraTitulo: { pt: "pintando agora", en: "painting now" }, agora: { pt: "[tema atual]", en: "[current theme]" } },
       { icone: "controle", titulo: { pt: "Jogos", en: "Games" }, agoraTitulo: { pt: "jogando agora", en: "playing now" }, agora: { pt: "[nome do jogo]", en: "[game title]" } },
       { icone: "livro", titulo: { pt: "Leitura", en: "Reading" }, agoraTitulo: { pt: "lendo agora", en: "reading now" }, agora: { pt: "[título do livro]", en: "[book title]" } },
-      { icone: "estrela", titulo: { pt: "Animes", en: "Anime" }, agoraTitulo: { pt: "assistindo agora", en: "watching now" }, agora: { pt: "[nome do anime]", en: "[anime title]" } },
+      { icone: "estrela", titulo: { pt: "Assistindo", en: "Watching" }, agoraTitulo: { pt: "assistindo agora", en: "watching now" }, agora: { pt: "[nome do anime]", en: "[anime title]" } },
     ],
   },
 
   /* ---------- CONTATO ---------- */
   contato: {
-    titulo: { pt: "Bora criar algo junto?", en: "Let's make something together?" },
+    titulo: { pt: "Bora criar algo junto?", en: "Let's work in something together?" },
     texto: {
-      pt: "Aberta a oportunidades de estágio, freelas de ilustração e boas conversas sobre comunicação.",
-      en: "Open to internships, illustration freelance work and good conversations about communication.",
+      pt: "Freelas de edição e encomendas de ilustração, mas também aberta a outros projetos. ;)",
+      en: "Freelance editing and commissions, but also open to other projects. ;)",
     },
     linkedin: "https://www.linkedin.com/in/luiza-ellwanger/",
-    email: "[seuemail@exemplo.com]",
+    email: "luiza.ellw@hotmail.com",
     // WhatsApp: só os números com DDD, ex: "51999998888".
     // Deixe "" (vazio) para esconder o card do WhatsApp.
     whatsapp: "51998962442",
@@ -242,7 +231,7 @@ const CONTEUDO = {
       en: "Hi Luiza! I saw your portfolio and would like to talk.",
     },
     // Texto que aparece escrito no card do WhatsApp
-    textoWhatsapp: { pt: "Mandar mensagem ↗", en: "Send a message ↗" },
+    textoWhatsapp: { pt: "Fale comigo ↗", en: "Text me ↗" },
   },
 
   rodape: { pt: "feito com água, pigmento e um pouco de código", en: "made with water, pigment and a little code" },
