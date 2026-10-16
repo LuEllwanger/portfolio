@@ -241,7 +241,68 @@ const CONTEUDO = {
       pt: "Oi Luiza! Vi seu portfólio e queria conversar.",
       en: "Hi Luiza! I saw your portfolio and would like to talk.",
     },
+    // Texto que aparece escrito no card do WhatsApp
+    textoWhatsapp: { pt: "Mandar mensagem ↗", en: "Send a message ↗" },
   },
 
   rodape: { pt: "feito com água, pigmento e um pouco de código", en: "made with water, pigment and a little code" },
+
+  /* ---------- TEXTOS FIXOS DO SITE ----------
+     Menu, botões e titulinhos que aparecem pelo site.
+     Os itens do menu precisam continuar na mesma ordem:
+     Sobre, Trabalhos, Formação, Habilidades, Artes, Contato.   */
+  interface: {
+    menu: {
+      pt: ["Sobre", "Trabalhos", "Formação", "Habilidades", "Artes", "Contato"],
+      en: ["About", "Work", "Education", "Skills", "Art", "Contact"],
+    },
+
+    // Titulinhos escritos à mão acima do título de cada seção
+    titulinhos: {
+      sobre: { pt: "sobre mim", en: "about me" },
+      trabalhos: { pt: "portfólio", en: "portfolio" },
+      formacao: { pt: "formação", en: "education" },
+      habilidades: { pt: "habilidades", en: "skills" },
+      artes: { pt: "artes", en: "art" },
+      contato: { pt: "contato", en: "contact" },
+    },
+
+    // Nomes dos filtros de projetos
+    categorias: {
+      todos: { pt: "Todos", en: "All" },
+      video: { pt: "Vídeos", en: "Videos" },
+      post: { pt: "Posts", en: "Social posts" },
+      cartaz: { pt: "Cartazes", en: "Posters" },
+      outro: { pt: "Outros", en: "Other" },
+    },
+
+    // Botões e rótulos
+    conversar: { pt: "Vamos conversar", en: "Let's talk" },
+    verProjeto: { pt: "Ver projeto ↗", en: "View project ↗" },
+    verIg: { pt: "ver todas as artes no Instagram", en: "see all my art on Instagram" },
+    copiar: { pt: "Copiar e-mail", en: "Copy email" },
+    copiado: { pt: "E-mail copiado", en: "Email copied" },
+    selecionado: { pt: "Selecionado, use Ctrl+C", en: "Selected, press Ctrl+C" },
+    temaClaro: { pt: "Usar tema claro", en: "Switch to light theme" },
+    temaEscuro: { pt: "Usar tema escuro", en: "Switch to dark theme" },
+
+    // Quando ainda não tem foto
+    foto: { pt: "sua foto aqui", en: "your photo here" },
+    fotoSub: { pt: "luz natural fica ótimo", en: "natural light works great" },
+
+    // Caixas da seção de habilidades
+    hard: { pt: "Hard skills", en: "Hard skills" },
+    hardSub: { pt: "O que eu sei fazer", en: "What I do" },
+    soft: { pt: "Soft skills", en: "Soft skills" },
+    softSub: { pt: "Como eu trabalho", en: "How I work" },
+    ferr: { pt: "Ferramentas", en: "Tools" },
+    ferrSub: { pt: "Programas do dia a dia", en: "Software I use daily" },
+    idiomas: { pt: "Idiomas", en: "Languages" },
+    idiomasSub: { pt: "Línguas que eu falo", en: "Languages I speak" },
+
+    // Títulos pequenos dos cards de contato
+    igArtes: { pt: "Instagram de artes", en: "Art Instagram" },
+    email: { pt: "E-mail", en: "Email" },
+    whatsapp: { pt: "WhatsApp", en: "WhatsApp" },
+  },
 };

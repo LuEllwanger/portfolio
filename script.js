@@ -17,30 +17,8 @@
   var lang = idiomaInicial();
   var filtro = "todos";
 
-  /* Textos fixos da interface (menus, botões) */
-  var UI = {
-    menu: { pt: ["Sobre", "Trabalhos", "Formação", "Habilidades", "Artes", "Contato"], en: ["About", "Work", "Education", "Skills", "Art", "Contact"] },
-    conversar: { pt: "Vamos conversar", en: "Let's talk" },
-    tags: {
-      sobre: { pt: "sobre mim", en: "about me" }, trabalhos: { pt: "portfólio", en: "portfolio" },
-      formacao: { pt: "formação", en: "education" }, habilidades: { pt: "habilidades", en: "skills" },
-      artes: { pt: "artes", en: "art" }, hobbies: { pt: "fora do expediente", en: "off the clock" },
-      contato: { pt: "contato", en: "contact" },
-    },
-    cat: { todos: { pt: "Todos", en: "All" }, video: { pt: "Vídeos", en: "Videos" }, post: { pt: "Posts", en: "Social posts" }, cartaz: { pt: "Cartazes", en: "Posters" }, outro: { pt: "Outros", en: "Other" } },
-    verProjeto: { pt: "Ver projeto ↗", en: "View project ↗" },
-    hard: { pt: "Hard skills", en: "Hard skills" }, hardSub: { pt: "O que eu sei fazer", en: "What I do" },
-    soft: { pt: "Soft skills", en: "Soft skills" }, softSub: { pt: "Como eu trabalho", en: "How I work" },
-    ferr: { pt: "Ferramentas", en: "Tools" }, ferrSub: { pt: "Programas do dia a dia", en: "Software I use daily" },
-    idiomas: { pt: "Idiomas", en: "Languages" }, idiomasSub: { pt: "Línguas que eu falo", en: "Languages I speak" },
-    verIg: { pt: "ver todas as artes no Instagram", en: "see all my art on Instagram" },
-    foto: { pt: "sua foto aqui", en: "your photo here" }, fotoSub: { pt: "luz natural fica ótimo", en: "natural light works great" },
-    igArtes: { pt: "Instagram de artes", en: "Art Instagram" }, email: { pt: "E-mail", en: "Email" },
-    whatsapp: { pt: "WhatsApp", en: "WhatsApp" },
-    chamarZap: { pt: "Mandar mensagem ↗", en: "Send a message ↗" },
-    copiar: { pt: "Copiar e-mail", en: "Copy email" }, copiado: { pt: "E-mail copiado", en: "Email copied" },
-    selecionado: { pt: "Selecionado, use Ctrl+C", en: "Selected, press Ctrl+C" },
-  };
+  /* Textos fixos (menu, botões, titulinhos) vêm do conteudo.js, seção "interface" */
+  var UI = C.interface || {};
   var ICONES = {
     pincel: '<path d="M31 6l11 11-17 17-6 1 1-6z"/><path d="M19 29c-6 0-11 4-11 13 5-1 13-3 13-9"/>',
     controle: '<rect x="5" y="14" width="38" height="22" rx="11"/><path d="M15 21v8M11 25h8"/><circle cx="31" cy="23" r="1.6" fill="currentColor"/><circle cx="35" cy="27" r="1.6" fill="currentColor"/>',
@@ -68,8 +46,9 @@
   function tx(o) {
     return esc(puro(o)).replace(/\[([^\]]+)\]/g, '<span class="fill">$1</span>');
   }
-  function t(k) { return UI[k][lang]; }
-  function tag(nome, cor) { return '<span class="tag t-' + cor + '"><i></i>' + UI.tags[nome][lang] + "</span>"; }
+  function t(k) { return puro(UI[k]); }
+  function nomeCat(c) { return puro((UI.categorias || {})[c]); }
+  function tag(nome, cor) { return '<span class="tag t-' + cor + '"><i></i>' + puro((UI.titulinhos || {})[nome]) + "</span>"; }
   function el(tagName, cls, conteudo) { return conteudo ? "<" + tagName + (cls ? ' class="' + cls + '"' : "") + ">" + conteudo + "</" + tagName + ">" : ""; }
   function linkExterno(href, inner, cls) {
     return '<a class="' + cls + '" href="' + esc(href) + '" target="_blank" rel="noopener">' + inner + "</a>";
@@ -85,7 +64,7 @@
 
     // MENU
     h += '<nav class="nav"><div class="wrap"><a class="logo" href="#topo">' + esc(C.nome.toLowerCase()) + "<span>.</span></a>" +
-      '<div class="links">' + t("menu").map(function (n, i) { return '<a href="#' + IDS[i] + '">' + n + "</a>"; }).join("") + "</div>" +
+      '<div class="links">' + (UI.menu ? UI.menu[lang] || UI.menu.pt : []).map(function (n, i) { return '<a href="#' + IDS[i] + '">' + n + "</a>"; }).join("") + "</div>" +
       '<div class="lang" role="group" aria-label="Idioma / Language">' +
       '<button data-lang="pt" aria-pressed="' + (lang === "pt") + '">PT</button>' +
       '<button data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></div>' +
@@ -130,7 +109,7 @@
     h += '<section class="band" id="trabalhos"><div class="wrap"><div class="head">' + tag("trabalhos", "azul") + el("h2", "", tx(W.titulo)) + el("p", "sub", tx(W.texto)) + "</div>";
     if (cats.length > 1) {
       h += '<div class="filters">' + ["todos"].concat(cats).map(function (c) {
-        return '<button data-filtro="' + c + '" aria-pressed="' + (filtro === c) + '">' + UI.cat[c][lang] + "</button>";
+        return '<button data-filtro="' + c + '" aria-pressed="' + (filtro === c) + '">' + nomeCat(c) + "</button>";
       }).join("") + "</div>";
     }
     h += '<div class="projs">' + W.projetos.map(function (p, i) {
@@ -141,7 +120,7 @@
         : p.capa ? '<img src="' + esc(p.capa) + '" alt="' + esc(puro(p.titulo)) + '" loading="lazy">'
         : '<canvas data-ph="' + i + '" aria-hidden="true"></canvas>';
       return '<article class="proj" style="--c:var(--' + cor + ')"><div class="media">' + midia +
-        '<span class="cat">' + (UI.cat[p.categoria] || UI.cat.outro)[lang] + "</span></div>" +
+        '<span class="cat">' + (nomeCat(p.categoria) || nomeCat("outro")) + "</span></div>" +
         '<div class="pbody">' + el("div", "client", tx(p.cliente)) + el("h3", "", tx(p.titulo)) + el("p", "", tx(p.descricao)) +
         (p.link ? linkExterno(p.link, t("verProjeto"), "more") : "") + "</div></article>";
     }).join("") + "</div></div></section>";
@@ -410,11 +389,11 @@
   }
   function botaoTema() {
     var escuro = temaAtual() === "dark";
-    var rotulo = escuro ? { pt: "Usar tema claro", en: "Switch to light theme" } : { pt: "Usar tema escuro", en: "Switch to dark theme" };
+    var rotulo = esc(t(escuro ? "temaClaro" : "temaEscuro"));
     var icone = escuro
       ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
       : '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>';
-    return '<button class="tema" id="tema" type="button" aria-label="' + rotulo[lang] + '" title="' + rotulo[lang] + '">' +
+    return '<button class="tema" id="tema" type="button" aria-label="' + rotulo + '" title="' + rotulo + '">' +
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icone + "</svg></button>";
   }
   function trocarTema() {
@@ -432,8 +411,8 @@
     var completo = num.length <= 11 ? "55" + num : num; // adiciona o +55 do Brasil
     var msg = puro(c.mensagemWhatsapp);
     var href = "https://wa.me/" + completo + (msg ? "?text=" + encodeURIComponent(msg) : "");
-    // mostra um convite em vez do número (o número fica só no link)
-    return linkExterno(href, "<small>" + t("whatsapp") + "</small><b>" + t("chamarZap") + "</b>", "card");
+    // mostra o texto do conteudo.js em vez do número (o número fica só no link)
+    return linkExterno(href, "<small>" + t("whatsapp") + "</small><b>" + (puro(c.textoWhatsapp) ? tx(c.textoWhatsapp) : "WhatsApp") + "</b>", "card");
   }
 
   /* ---------- cliques ---------- */
