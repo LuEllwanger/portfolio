@@ -36,6 +36,8 @@
     verIg: { pt: "ver todas as artes no Instagram", en: "see all my art on Instagram" },
     foto: { pt: "sua foto aqui", en: "your photo here" }, fotoSub: { pt: "luz natural fica ótimo", en: "natural light works great" },
     igArtes: { pt: "Instagram de artes", en: "Art Instagram" }, email: { pt: "E-mail", en: "Email" },
+    whatsapp: { pt: "WhatsApp", en: "WhatsApp" },
+    chamarZap: { pt: "Mandar mensagem ↗", en: "Send a message ↗" },
     copiar: { pt: "Copiar e-mail", en: "Copy email" }, copiado: { pt: "E-mail copiado", en: "Email copied" },
     selecionado: { pt: "Selecionado, use Ctrl+C", en: "Selected, press Ctrl+C" },
   };
@@ -182,6 +184,7 @@
       linkExterno(K2.linkedin, "<small>LinkedIn</small><b>" + esc(li) + "</b>", "card") +
       linkExterno(igUrl, "<small>" + t("igArtes") + "</small><b>@" + esc(igUser) + "</b>", "card") +
       '<div class="card"><small>' + t("email") + '</small><b id="mail">' + tx(K2.email) + '</b><button type="button" class="copy" id="copiar">' + t("copiar") + "</button></div>" +
+      cardWhatsapp(K2) +
       "</div></div></section>";
 
     h += '<footer><div class="wrap"><span>' + esc(C.nome + " " + C.sobrenome) + " · " + esc(C.cidade) + "</span><span>" + tx(C.rodape) + "</span></div></footer>";
@@ -395,6 +398,17 @@
       raminho(ctx, { x: w * entre(R, 0.35, 0.6), y: h * 0.98, s: m * 0.48, lado: i % 2, inclinacao: entre(R, 0.05, 0.3), seed: 300 + i * 7 }, cores);
       soltos(ctx, { x: w * entre(R, 0.25, 0.75), y: h * entre(R, 0.25, 0.6), s: m * 0.4, seed: 500 + i * 13 }, cores);
     });
+  }
+
+  /* ---------- WhatsApp ---------- */
+  function cardWhatsapp(c) {
+    var num = String(c.whatsapp || "").replace(/\D/g, "");
+    if (!num) return "";
+    var completo = num.length <= 11 ? "55" + num : num; // adiciona o +55 do Brasil
+    var msg = puro(c.mensagemWhatsapp);
+    var href = "https://wa.me/" + completo + (msg ? "?text=" + encodeURIComponent(msg) : "");
+    // mostra um convite em vez do número (o número fica só no link)
+    return linkExterno(href, "<small>" + t("whatsapp") + "</small><b>" + t("chamarZap") + "</b>", "card");
   }
 
   /* ---------- cliques ---------- */

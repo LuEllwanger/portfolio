@@ -67,7 +67,7 @@ const CONTEUDO = {
     // Os três dados rápidos embaixo do texto
     dados: [
       { titulo: { pt: "Localização", en: "Location" }, valor: { pt: "Novo Hamburgo e região", en: "Novo Hamburgo area, Brazil" } },
-      { titulo: { pt: "Curso", en: "Degree" }, valor: { pt: "[4]º semestre", en: "[X]th semester" } },
+      { titulo: { pt: "Curso", en: "Degree" }, valor: { pt: "4º semestre", en: "4th semester" } },
       { titulo: { pt: "Buscando", en: "Looking for" }, valor: { pt: "Experiências criativas", en: "Creative experience" } },
     ],
   },
@@ -233,7 +233,14 @@ const CONTEUDO = {
     },
     linkedin: "https://www.linkedin.com/in/luiza-ellwanger/",
     email: "[seuemail@exemplo.com]",
-    whatsapp: "wa.me/5551998962442"
+    // WhatsApp: só os números com DDD, ex: "51999998888".
+    // Deixe "" (vazio) para esconder o card do WhatsApp.
+    whatsapp: "51998962442",
+    // Mensagem que já aparece escrita quando a pessoa clica no card
+    mensagemWhatsapp: {
+      pt: "Oi Luiza! Vi seu portfólio e queria conversar.",
+      en: "Hi Luiza! I saw your portfolio and would like to talk.",
+    },
   },
 
   rodape: { pt: "feito com água, pigmento e um pouco de código", en: "made with water, pigment and a little code" },
