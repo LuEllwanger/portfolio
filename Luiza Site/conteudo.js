@@ -32,7 +32,7 @@ const CONTEUDO = {
   cidade: "Novo Hamburgo",
   foto: "", // ex: "imagens/foto.jpg"
 
-  saudacao: { pt: "oi, eu sou a", en: "hi, I'm" },
+  saudacao: { pt: "oi! eu sou a", en: "hi, I'm" },
 
   // Etiquetas coloridas embaixo do nome
   etiquetas: [
@@ -67,7 +67,7 @@ const CONTEUDO = {
     // Os três dados rápidos embaixo do texto
     dados: [
       { titulo: { pt: "Localização", en: "Location" }, valor: { pt: "Novo Hamburgo e região", en: "Novo Hamburgo area, Brazil" } },
-      { titulo: { pt: "Curso", en: "Degree" }, valor: { pt: "[X]º semestre", en: "[X]th semester" } },
+      { titulo: { pt: "Curso", en: "Degree" }, valor: { pt: "[4]º semestre", en: "[X]th semester" } },
       { titulo: { pt: "Buscando", en: "Looking for" }, valor: { pt: "Experiências criativas", en: "Creative experience" } },
     ],
   },
@@ -233,6 +233,7 @@ const CONTEUDO = {
     },
     linkedin: "https://www.linkedin.com/in/luiza-ellwanger/",
     email: "[seuemail@exemplo.com]",
+    whatsapp: "wa.me/5551998962442"
   },
 
   rodape: { pt: "feito com água, pigmento e um pouco de código", en: "made with water, pigment and a little code" },
