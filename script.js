@@ -88,7 +88,8 @@
       '<div class="links">' + t("menu").map(function (n, i) { return '<a href="#' + IDS[i] + '">' + n + "</a>"; }).join("") + "</div>" +
       '<div class="lang" role="group" aria-label="Idioma / Language">' +
       '<button data-lang="pt" aria-pressed="' + (lang === "pt") + '">PT</button>' +
-      '<button data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></div></div></nav>';
+      '<button data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></div>' +
+      botaoTema() + "</div></nav>";
 
     // TOPO
     h += '<header class="hero" id="topo"><div class="wrap">' +
@@ -400,6 +401,30 @@
     });
   }
 
+  /* ---------- tema claro / escuro ----------
+     Começa pelo tema do sistema da pessoa; o botão troca e lembra a escolha. */
+  function temaAtual() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t === "light" || t === "dark") return t;
+    return window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function botaoTema() {
+    var escuro = temaAtual() === "dark";
+    var rotulo = escuro ? { pt: "Usar tema claro", en: "Switch to light theme" } : { pt: "Usar tema escuro", en: "Switch to dark theme" };
+    var icone = escuro
+      ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
+      : '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>';
+    return '<button class="tema" id="tema" type="button" aria-label="' + rotulo[lang] + '" title="' + rotulo[lang] + '">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icone + "</svg></button>";
+  }
+  function trocarTema() {
+    var novo = temaAtual() === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", novo);
+    try { localStorage.setItem("tema", novo); } catch (x) {}
+    render();
+    agendarFundo(true);
+  }
+
   /* ---------- WhatsApp ---------- */
   function cardWhatsapp(c) {
     var num = String(c.whatsapp || "").replace(/\D/g, "");
@@ -422,6 +447,8 @@
     } else if (b.dataset.filtro) {
       filtro = b.dataset.filtro;
       render();
+    } else if (b.id === "tema") {
+      trocarTema();
     } else if (b.id === "copiar") {
       copiarEmail(b);
     }
@@ -455,7 +482,7 @@
       agendarFundo();
     }, 250);
   });
-  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { pintarPlaceholders(); agendarFundo(true); }); } catch (x) {}
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { render(); agendarFundo(true); }); } catch (x) {}
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { agendarFundo(); });
   window.addEventListener("load", function () { agendarFundo(); });
 
